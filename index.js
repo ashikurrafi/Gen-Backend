@@ -123,6 +123,8 @@ if (autoYes) {
       console.log("You can now start your server with:");
       console.log("");
       console.log("> npm run dev");
+      console.log("");
+      console.log("");
     } catch (error) {
       console.error("\nSetup failed:", error.message);
       process.exit(1);
