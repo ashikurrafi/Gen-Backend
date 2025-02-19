@@ -1,0 +1,34 @@
+{
+  "name": "gen-backend",
+  "version": "1.0.0",
+  "description": "A CLI tool to generate a rock solid backend setup using MongoDB, Express and Node",
+  "keywords": [
+    "cli",
+    "backend",
+    "generator",
+    "express",
+    "node",
+    "npm"
+  ],
+  "homepage": "https://github.com/ashikurrafi/Gen-Backend#readme",
+  "bugs": {
+    "url": "https://github.com/ashikurrafi/Gen-Backend/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ashikurrafi/Gen-Backend.git"
+  },
+  "license": "MIT",
+  "author": "Ashikur Rafi",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "gen-backend": "./index.js"
+  },
+  "dependencies": {
+    "prompt-sync": "^4.2.0"
+  }
+}
