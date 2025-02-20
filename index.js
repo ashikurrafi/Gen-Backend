@@ -71,6 +71,7 @@ if (autoYes) {
         "./src/routes",
         "./src/services",
         "./src/utils",
+        "./src/error",
       ];
       directories.forEach((dir) => {
         fs.mkdirSync(dir, { recursive: true });
@@ -82,7 +83,10 @@ if (autoYes) {
       const libDir = path.join(__dirname, "lib");
       const filesToCopy = [
         { src: "api.js", dest: "./src/routes/api.js" },
+        { src: "apiError.js", dest: "./src/error/apiError.js" },
+        { src: "apiResponse.js", dest: "./src/error/apiResponse.js" },
         { src: "app.js", dest: "./src/app.js" },
+        { src: "asyncHandler.js", dest: "./src/error/asyncHandler.js" },
         { src: "db.js", dest: "./src/config/db.js" },
         { src: "index.js", dest: "./src/routes/index.js" },
         { src: "server.js", dest: "./src/server.js" },
