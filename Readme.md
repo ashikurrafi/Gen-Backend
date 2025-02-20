@@ -128,6 +128,93 @@ Response:
 }
 ```
 
+## apiError usage
+
+1. **Throwing an API error**:
+
+```javascript
+const apiError = require("./apiError");
+
+// Example: Throw a 400 Bad Request error with custom message
+throw new apiError(400, "Invalid input data", [
+  { field: "email", error: "Invalid format" },
+]);
+```
+
+2. **Catching the error in a centralized error handler**: In your main app, use middleware to catch the error and send an appropriate response
+
+```javascript
+const express = require("express");
+const app = express();
+
+// Centralized error handler
+app.use((err, req, res, next) => {
+  if (err instanceof apiError) {
+    return res.status(err.statusCode).json({
+      success: false,
+      message: err.errorMessage,
+      errors: err.errors,
+    });
+  }
+  // Handle other errors here
+  res.status(500).json({
+    success: false,
+    message: "Internal server error",
+  });
+});
+```
+
+## apiResponse usage
+
+1. **Sending a successful response**:
+
+```javascript
+const apiResponse = require("./apiResponse");
+
+// Example: Sending a successful response with data
+const response = new apiResponse(
+  200,
+  { userId: 123, name: "John Doe" },
+  "User fetched successfully"
+);
+res.status(response.statusCode).json({
+  success: response.success,
+  message: response.message,
+  data: response.data,
+});
+```
+
+2. **For success responses in controllers**:
+
+```javascript
+// Example controller function
+const getUser = (req, res) => {
+  const user = getUserFromDb(req.params.userId);
+  const response = new apiResponse(200, user, "User data retrieved");
+  res.status(response.statusCode).json(response);
+};
+```
+
+## asyncHandler usage
+
+**Wrap your async route handler with `asyncHandler`**:
+
+```javascript
+const asyncHandler = require("./asyncHandler");
+
+// Example of using asyncHandler in a route
+const getUser = asyncHandler(async (req, res, next) => {
+  const user = await getUserFromDb(req.params.userId);
+  if (!user) {
+    throw new apiError(404, "User not found");
+  }
+  const response = new apiResponse(200, user);
+  res.status(response.statusCode).json(response);
+});
+
+app.get("/user/:userId", getUser);
+```
+
 ## Dependencies
 
 This project uses the following dependencies:
