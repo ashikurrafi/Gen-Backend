@@ -101,6 +101,10 @@ After running the generator, your project will have the following structure:
         +---config
             +---db.js
         +---controllers
+        +---error
+            +---apiError.js
+            +---apiResponse.js
+            +---apiHandler.js
         +---middlewares
         +---models
         +---routes
