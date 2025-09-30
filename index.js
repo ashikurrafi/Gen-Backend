@@ -49,7 +49,7 @@ if (autoYes) {
       console.log("\nInstalling dependencies...");
       console.log("");
       await runCommand(
-        "npm install cors dotenv express mongoose",
+        "npm install cors dotenv express mongoose cookie-parser",
         "Main dependencies ... Done!"
       );
       console.log("");
