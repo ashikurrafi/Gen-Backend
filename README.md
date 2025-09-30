@@ -137,7 +137,7 @@ Response:
 1. **Throwing an API error**:
 
 ```javascript
-const apiError = require("./apiError");
+import apiError from "./apiError.js";
 
 // Example: Throw a 400 Bad Request error with custom message
 throw new apiError(400, "Invalid input data", [
@@ -148,7 +148,7 @@ throw new apiError(400, "Invalid input data", [
 2. **Catching the error in a centralized error handler**: In your main app, use middleware to catch the error and send an appropriate response
 
 ```javascript
-const express = require("express");
+import express from "express";
 const app = express();
 
 // Centralized error handler
@@ -173,7 +173,7 @@ app.use((err, req, res, next) => {
 1. **Sending a successful response**:
 
 ```javascript
-const apiResponse = require("./apiResponse");
+import apiResponse from "./apiResponse.js";
 
 // Example: Sending a successful response with data
 const response = new apiResponse(
@@ -204,7 +204,7 @@ const getUser = (req, res) => {
 **Wrap your async route handler with `asyncHandler`**:
 
 ```javascript
-const asyncHandler = require("./asyncHandler");
+import asyncHandler from "./asyncHandler.js";
 
 // Example of using asyncHandler in a route
 const getUser = asyncHandler(async (req, res, next) => {
